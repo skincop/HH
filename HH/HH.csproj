@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\CloseWin.png" />
+    <None Remove="Resources\Images\logo.png" />
+    <None Remove="Resources\Images\maximize.png" />
+    <None Remove="Resources\Images\MaximizeWin.png" />
+    <None Remove="Resources\Images\minimize.png" />
+    <None Remove="Resources\Images\windowClose.png" />
+    <None Remove="Resources\Images\windowMinimize.png" />
+    <None Remove="Resources\Images\WinimizeWin.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\maximize.png" />
+    <Resource Include="Resources\Images\MaximizeWin.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="RestoreWindowPlace" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\CloseWin.png" />
+    <Resource Include="Resources\Images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\minimize.png" />
+    <Resource Include="Resources\Images\windowClose.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\windowMinimize.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\WinimizeWin.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UserSetting.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserSetting.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="UserSetting.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserSetting.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

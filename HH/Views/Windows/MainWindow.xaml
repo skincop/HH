@@ -1,0 +1,115 @@
+﻿<Window x:Class="HH.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HH"
+        xmlns:vm="clr-namespace:HH.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="380"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
+
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
+
+    <Window.Resources>
+        <ControlTemplate x:Key="LoginFailed">
+            <StackPanel Orientation="Vertical">
+                <Border BorderBrush="#202020" BorderThickness="3" CornerRadius="20">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Text="{DynamicResource LoginException}" Padding="20,5,0,0"
+                           Foreground="White"
+                           FontSize="10" FontWeight="Bold"/>
+            </StackPanel>
+        </ControlTemplate>
+        <ControlTemplate x:Key="PasswordFailed">
+            <StackPanel Orientation="Vertical">
+                <Border BorderBrush="#202020" BorderThickness="3" CornerRadius="20">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Text="{DynamicResource PasswordException}" Padding="20,5,0,0"
+                           Foreground="White"
+                           FontSize="10" FontWeight="Bold"/>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    
+    
+    <Border CornerRadius="40">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                <GradientStop Color="#1e3b70" Offset="0"/>
+                <GradientStop Color="#29539b" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,20,0">
+                <ComboBox  Margin="0,0,240,0"
+                           Style="{DynamicResource ComboBoxFlatStyle}"
+                           SelectedIndex="{Binding SelectedLanguage}" Width="50">
+                    <ComboBoxItem Content="Ru"/>
+                    <ComboBoxItem Content="En"/>
+                </ComboBox>
+                <Image Source="../../Resources/Images/windowMinimize.png" Width="20" Height="20">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding MinimizeWindowCommand}"/>
+                    </Image.InputBindings>
+                </Image>
+                <Image Source="../../Resources/Images/windowClose.png" Width="25" Height="25" Margin="5">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding CloseApplicationCommand}"/>
+                    </Image.InputBindings>
+                </Image>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="{DynamicResource Login}"
+                           Style="{DynamicResource TBStyle}"
+                           Margin="0,50,0,0"
+                           HorizontalAlignment="Center"/>
+                <TextBox Name="Login"
+                         Margin="0,70,0,0"
+                         Style="{DynamicResource TBoxStyle}"
+                         Width="275"
+                         Height="38"
+                         Validation.ErrorTemplate="{StaticResource LoginFailed}">
+                    <TextBox.Text>
+                        <Binding Path="Login" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <DataErrorValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox Name="Password"
+                         Margin="0,40,0,0"
+                         Style="{DynamicResource TBoxStyle}"
+                         Width="275"
+                         Height="38"
+                         Validation.ErrorTemplate="{StaticResource PasswordFailed}">
+                    <TextBox.Text>
+                        <Binding Path="Password" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <DataErrorValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button Content="{DynamicResource Enter}"
+                        Margin="0,40,0,0"
+                        Height="50"
+                        Width="250"
+                        Style="{DynamicResource ButtonStyle}"
+                        Command="{Binding Send}"/>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,82 @@
+﻿<Application x:Class="HH.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HH"
+             xmlns:ViewModel="clr-namespace:HH.ViewModels.UserControlVM"
+             xmlns:UCViewModel="clr-namespace:HH.ViewModels.UserControlVM.DataBaseVM"
+             xmlns:View="clr-namespace:HH.Views.UserControls"
+             xmlns:UCView="clr-namespace:HH.Views.UserControls.DataBaseUC"
+             xmlns:UserView="clr-namespace:HH.Views.UserControls.UserWindowUc"
+             xmlns:UserVM="clr-namespace:HH.ViewModels.UserWindowVM"
+             StartupUri="Views/Windows/MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModel:SettingsViewModel}">
+                <View:SettingsUserControl/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:DataBaseViewModel}">
+                <View:DataBaseUserControl/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:SpecialViewModel}">
+                <View:SpecialUserControl/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type UCViewModel:AccountViewModel}">
+                <UCView:AccountUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:AllocationViewModel}">
+                <UCView:AllocationUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:ApartmentsViewModel}">
+                <UCView:ApartmentsUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:ClientViewModel}">
+                <UCView:ClientUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:EmployeeViewModel}">
+                <UCView:EmployeeUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:PostViewModel}">
+                <UCView:PostUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:ServiceListViewModel}">
+                <UCView:ServiceListUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UCViewModel:ServiceViewModel}">
+                <UCView:ServiceUserControl/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type UserVM:MainViewModel}">
+                <UserView:MainUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UserVM:SupportViewModel}">
+                <UserView:SupportUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UserVM:ServiceViewModel}">
+                <UserView:ServiceUserControl/>
+            </DataTemplate>
+
+
+
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/AuthorizationStyle.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/UserWindowStyle.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/SuperAdminLightStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="Resources/Languages/LanguagesEn.xaml"/>
+                <ResourceDictionary Source="Resources/Languages/LanguagesRu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+        
+
+
+    </Application.Resources>
+</Application>

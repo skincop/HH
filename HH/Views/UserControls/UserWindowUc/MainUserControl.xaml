@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="HH.Views.UserControls.UserWindowUc.MainUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:us="clr-namespace:HH.ViewModels.UserWindowVM"
+             xmlns:base="clr-namespace:HH.ViewModels.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <us:MainViewModel/>
+    </UserControl.DataContext>
+    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+            <StackPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock TextAlignment="Center"
+                   FontSize="25"
+                   FontFamily="Monserrat Medium"
+                   VerticalAlignment="Center"
+                   Foreground="#031f4b"
+                   FontWeight="Bold">
+                        <Run Text="{DynamicResource Goodday}" />
+                        <Run Text="" />
+                        <Run Text="{Binding Client.Name}" />
+                        <Run Text="" />
+                        <Run Text="{Binding Client.Surname}" />
+                    </TextBlock>
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBlock TextAlignment="Center"
+                   FontSize="25"
+                   FontFamily="Monserrat Medium"
+                   VerticalAlignment="Center"
+                   Foreground="#031f4b"
+                   FontWeight="Bold">
+                        <Run Text="{DynamicResource Booking}" />
+                        <Run Text="{Binding Allocation.FirstDate,StringFormat=dd.MM.yyyy}" />
+                        <Run Text="" />
+                        <Run Text="{DynamicResource To}" />
+                        <Run Text="" />
+                        <Run Text="{Binding Allocation.LastDate,StringFormat=d.MM.yyyy}" />
+                    </TextBlock>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</UserControl>
